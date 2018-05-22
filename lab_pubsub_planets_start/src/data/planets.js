@@ -1,6 +1,7 @@
 const PubSub = require('../helpers/pub_sub.js');
 
-const planets = [
+const Planets = function(){
+  this.planets = [
   {
     name: 'Mercury',
     orbit: 87.969,
@@ -81,7 +82,7 @@ const planets = [
     moons: 14,
     image: 'images/neptune.jpg'
   }
-];
+]};
 
 Planets.prototype.bindEvents = function () {
   PubSub.publish('Planets:all-planets-ready', this.planets);
@@ -96,4 +97,4 @@ Planets.prototype.publishPlanetDetail = function (planetIndex) {
   PubSub.publish('Planets:selected-planet-ready', selectedPlanet);
 };
 
-module.exports = planets;
+module.exports = Planets;
